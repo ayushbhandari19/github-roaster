@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GitHub Roaster</title>
+    <style>
+        body {
+            font-family: system-ui;
+            background: #0d1117;
+            color: #c9d1d9;
+            display: flex;
+            justify-content: center;
+            padding-top: 80px;
+        }
+        .box {
+            background: #161b22;
+            padding: 30px;
+            border-radius: 12px;
+            width: 400px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            background: #238636;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h2>🔥 GitHub Roaster</h2>
+    <input id="user" placeholder="GitHub username" />
+    <button onclick="roast()">Roast Me</button>
+    <div id="out" class="result"></div>
+</div>
+
+<script>
+async function roast() {
+    const u = document.getElementById("user").value;
+    const out = document.getElementById("out");
+    out.innerText = "Roasting...";
+
+    const res = await fetch(`/api/roast/${u}`);
+    const data = await res.json();
+
+    out.innerText =
+        "🔥 Roast:\n" + data.roast + "\n\n" +
+        "⭐ Stars: " + data.stats.stars + "\n" +
+        "🏆 Best Repo: " + data.stats.bestRepo + "\n" +
+        "💀 Worst Repo: " + data.stats.worstRepo + "\n" +
+        "🧠 Language: " + data.stats.primaryLanguage;
+}
+</script>
+</body>
+</html>

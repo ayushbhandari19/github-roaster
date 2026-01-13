@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GitHub Roaster</title>
+    <style>
+        body {
+            background:#0d1117;
+            color:#c9d1d9;
+            font-family:system-ui;
+            display:flex;
+            justify-content:center;
+            padding-top:80px;
+        }
+        .card {
+            background:#161b22;
+            padding:30px;
+            border-radius:12px;
+            width:450px;
+        }
+        .roast {
+            background:#21262d;
+            padding:15px;
+            border-radius:10px;
+            margin:15px 0;
+            font-size:18px;
+        }
+        .stat {
+            margin:5px 0;
+        }
+        .share {
+            margin-top:20px;
+            padding:10px;
+            background:#238636;
+            color:white;
+            text-align:center;
+            border-radius:8px;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2>🔥 [[${user}]]</h2>
+
+    <div class="roast">[[${roast}]]</div>
+
+    <div class="stat">⭐ Stars: [[${stats.stars}]]</div>
+    <div class="stat">🏆 Best Repo: [[${stats.bestRepo}]]</div>
+    <div class="stat">💀 Worst Repo: [[${stats.worstRepo}]]</div>
+    <div class="stat">🧠 Language: [[${stats.primaryLanguage}]]</div>
+
+    <div class="share">
+        Share this link:<br>
+        <small>/u/[[${user}]]</small>
+    </div>
+</div>
+</body>
+</html>

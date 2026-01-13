@@ -1,9 +1,12 @@
 package com.roaster.github;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GitHubRepo {
+public class GitHubRepo implements Serializable{
+    private static final long serialVersionUID = 1L;
     private String name;
     private int stargazers_count;
     private String language;

@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: github-roaster
+    env: docker
+    plan: free
+    autoDeploy: true

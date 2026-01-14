@@ -13,10 +13,15 @@ public class GitHubClient {
     private final WebClient client;
 
     public GitHubClient(WebClient.Builder builder) {
+        String token = System.getenv("GITHUB_TOKEN");
+
         this.client = builder
                 .baseUrl("https://api.github.com")
+                .defaultHeader("Authorization", "Bearer " + token)
+                .defaultHeader("Accept", "application/vnd.github+json")
                 .build();
     }
+
     @Cacheable("githubRepos")
     public Mono<List<GitHubRepo>> getRepos(String username) {
         return client.get()
